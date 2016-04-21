@@ -1,0 +1,42 @@
+{
+  "name": "webtoolsnz/yii2-admin-lte",
+  "description": "A Yii2 widgets library by Webtools",
+  "keywords": [
+    "yii2",
+    "theme",
+    "admin-lte"
+  ],
+  "type": "yii2-extension",
+  "license": "MIT",
+  "homepage": "https://github.com/webtoolsnz/yii2-admin-lte",
+  "authors": [
+    {
+      "name": "Byron Adams",
+      "email": "byron@webtools.co.nz",
+      "role": "Developer"
+    },
+    {
+      "name": "Webtools Ltd",
+      "email": "support@webtools.co.nz",
+      "homepage": "http://www.webtools.co.nz",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "^2.0.7",
+    "yiisoft/yii2-bootstrap": "*",
+    "almasaeed2010/adminlte": "^2.3",
+    "fortawesome/font-awesome": "^4.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "webtoolsnz\\AdminLte\\": "src/"
+    }
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit --coverage-text --coverage-html=build;"
+  }
+}

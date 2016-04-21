@@ -1,0 +1,56 @@
+@import "compass";
+
+$info:  #00c0ef;
+$success: #00a65a;
+$primary: #3c8dbc;
+$danger: #dd4b39;
+$warning: #f39c12;
+$lightGrey: #888888;
+
+.info-box {
+  .progress {
+    .progress-bar-aqua, .progress-bar-info {
+      background-color: $info;
+    }
+    .progress-bar-green, .progress-bar-success {
+      background-color: $success;
+    }
+    .progress-bar-light-blue, .progress-bar-primary {
+      background-color: $primary;
+    }
+    .progress-bar-red, .progress-bar-danger {
+      background-color: $danger;
+    }
+    .progress-bar-yellow, .progress-bar-warning {
+      background-color: $warning;
+    }
+  }
+}
+
+.box {
+  &.loading .overlay {
+    display: block;
+  }
+  &.collapsed-box .overlay .fa {
+    font-size: 30px;
+  }
+  .overlay {
+    display:none;
+    .fa {
+      font-size: 60px;
+      color: $lightGrey;
+    }
+  }
+  .box-body {
+    overflow-x: hidden;
+  }
+}
+
+.callout {
+  .callout-icon {
+    font-size: 35px;
+    text-align:center;
+  }
+}
+
+
