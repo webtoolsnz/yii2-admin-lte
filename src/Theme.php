@@ -24,6 +24,12 @@ class Theme extends \yii\base\Theme
     const SKIN_BLUE_LIGHT = 'skin-blue-light';
     const SKIN_GREEN = 'skin-green';
     const SKIN_GREEN_LIGHT = 'skin-green-light';
+    const SKIN_YELLOW = 'skin-yellow';
+    const SKIN_YELLOW_LIGHT = 'skin-yellow-light';
+    const SKIN_RED = 'skin-red';
+    const SKIN_RED_LIGHT = 'skin-red-light';
+    const SKIN_PURPLE = 'skin-purple';
+    const SKIN_PURPLE_LIGHT = 'skin-purple-light';
 
     /**
      * @var string
