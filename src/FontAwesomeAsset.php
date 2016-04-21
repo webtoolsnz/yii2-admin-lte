@@ -23,7 +23,7 @@ class FontAwesomeAsset extends AssetBundle
     /**
      * @var string
      */
-    public $sourcePath = '@vendor/fortawesome/font-awesome/dist';
+    public $sourcePath = '@vendor/fortawesome/font-awesome';
 
     /**
      * @var array
