@@ -8,7 +8,6 @@ php:
 
 install:
   - composer self-update
-  - composer install
 
 before_script:
   - travis_retry composer self-update
