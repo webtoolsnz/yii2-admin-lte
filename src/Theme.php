@@ -39,7 +39,7 @@ class Theme extends \yii\base\Theme
     /**
      * @var string
      */
-    public $skin;
+    public $skin = self::SKIN_BLUE;
 
     /**
      *  Set the basePath of the theme, the
