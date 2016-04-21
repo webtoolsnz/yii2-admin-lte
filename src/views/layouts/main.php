@@ -26,7 +26,7 @@ ThemeAsset::register($this);
     <?php $this->head() ?>
 
 </head>
-<body class="hold-transition <?= \app\themes\AdminLte\AdminLteAsset::$skin ?> sidebar-mini">
+<body class="hold-transition <?= $this->theme->skin ?> sidebar-mini">
 <div class="wrapper">
 
     <!-- header -->
