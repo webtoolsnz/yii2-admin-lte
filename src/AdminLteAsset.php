@@ -37,7 +37,7 @@ class AdminLteAsset extends \yii\web\AssetBundle
      * @var array
      */
     public $depends = [
-        'webtoolsnz\widgets\FontAwesomeAsset',
+        'webtoolsnz\AdminLte\FontAwesomeAsset',
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
         'yii\bootstrap\BootstrapPluginAsset',

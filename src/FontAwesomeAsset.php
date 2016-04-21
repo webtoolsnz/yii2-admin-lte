@@ -12,33 +12,32 @@
 
 namespace webtoolsnz\AdminLte;
 
+use yii\web\AssetBundle;
+
 /**
- * Class ThemeAsset
+ * Class FontAwesomeAsset
  * @package webtoolsnz\AdminLte
  */
-class ThemeAsset extends \yii\web\AssetBundle
+class FontAwesomeAsset extends AssetBundle
 {
+    /**
+     * @var string
+     */
+    public $sourcePath = '@vendor/fortawesome/font-awesome/dist';
+
     /**
      * @var array
      */
-    public $depends = [
-        'yii\web\YiiAsset',
-        'webtoolsnz\AdminLte\AdminLteAsset'
-    ];
+    public $css = ['css/font-awesome.min.css'];
 
-    public $css = ['css/overrides.css'];
     /**
      * @var array
      */
     public $publishOptions = [
-        'forceCopy' => true
+        'forceCopy' => true,
+        'only' => [
+            'fonts/*',
+            'css/*',
+        ]
     ];
-
-    /**
-     * set the source path to the local assets directory
-     */
-    public function init()
-    {
-        $this->sourcePath = __DIR__ . '/assets';
-    }
 }
