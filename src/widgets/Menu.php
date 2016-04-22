@@ -77,34 +77,43 @@ class Menu extends \yii\widgets\Menu
      */
     protected function getItemOptions($items, $index)
     {
-        $n = count($items);
+        $options = array_merge(
+            $this->itemOptions,
+            ArrayHelper::getValue($items[$index], 'options', [])
+        );
+
+        Html::addCssClass($options, $this->generateItemClass($items, $index));
+
+        return $options;
+    }
+
+    /**
+     * @param $items
+     * @param $index
+     * @return array
+     */
+    protected function generateItemClass($items, $index)
+    {
+        $last = $index === count($items) - 1;
         $item = $items[$index];
 
-        $options = array_merge($this->itemOptions, ArrayHelper::getValue($item, 'options', []));
+        $classes = [
+            [($item['active']), $this->activeCssClass],
+            [$this->firstItemCssClass, ($index === 0 && $this->firstItemCssClass !== null)],
+            [$this->lastItemCssClass, ($last && $this->lastItemCssClass !== null)],
+            [isset($item['items']), 'treeview'],
+            [!isset($item['url']), 'header']
+        ];
 
         $class = [];
 
-        if ($item['active']) {
-            $class[] = $this->activeCssClass;
-        }
-        if ($index === 0 && $this->firstItemCssClass !== null) {
-            $class[] = $this->firstItemCssClass;
-        }
-        if ($index === $n - 1 && $this->lastItemCssClass !== null) {
-            $class[] = $this->lastItemCssClass;
+        foreach ($classes as $item) {
+            if ($item[0] == true) {
+                $class[] = $item[1];
+            }
         }
 
-        if (isset($item['items'])) {
-            $class[] = 'treeview';
-        }
-
-        if (!isset($item['url'])) {
-            $class[] = 'header';
-        }
-
-        Html::addCssClass($options, $class);
-
-        return $options;
+        return $class;
     }
 
     /**
@@ -131,8 +140,6 @@ class Menu extends \yii\widgets\Menu
 
         return implode(PHP_EOL, $lines);
     }
-
-
 
     /**
      * @inheritdoc
