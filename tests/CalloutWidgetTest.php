@@ -3,7 +3,6 @@ namespace webtoolsnz\AdminLte\tests;
 
 use webtoolsnz\AdminLte\widgets\Callout;
 
-
 class CalloutWidgetTest extends TestCase
 {
     public function testWidgetHtml()
@@ -15,8 +14,6 @@ class CalloutWidgetTest extends TestCase
             'showIcon' => false,
         ]);
 
-        file_put_contents(__DIR__.'/data/basic-callout.html', $html);
-
         $this->assertXmlStringEqualsXmlFile(__DIR__.'/data/basic-callout.html', $html);
     }
 
@@ -27,8 +24,6 @@ class CalloutWidgetTest extends TestCase
             'title' => 'Title!',
             'message' => 'This is an informative call out!',
         ]);
-
-        file_put_contents(__DIR__.'/data/icon-callout.html', $html);
 
         $this->assertXmlStringEqualsXmlFile(__DIR__.'/data/icon-callout.html', $html);
     }

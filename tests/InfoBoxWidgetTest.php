@@ -3,8 +3,7 @@ namespace webtoolsnz\AdminLte\tests;
 
 use webtoolsnz\AdminLte\widgets\ProgressInfoBox;
 
-
-class ProgressInfoBoxWidgetTest extends TestCase
+class InfoBoxWidgetTest extends TestCase
 {
     public function testWidgetHtml()
     {
