@@ -47,7 +47,7 @@ ThemeAsset::register($this);
             <?= Breadcrumbs::widget([
                 'homeLink' => [
                     'label' => 'Home',
-                    'url' => '/' . $this->context->module->id
+                    'url' => '/' . ($this->context ? $this->context->module->id : null),
                 ],
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>

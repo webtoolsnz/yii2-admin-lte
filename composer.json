@@ -30,15 +30,24 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
-    "fabpot/php-cs-fixer": "^1.11"
+    "fabpot/php-cs-fixer": "^1.11",
+    "symfony/dom-crawler": "^3.0",
+    "symfony/css-selector": "^3.0"
   },
   "autoload": {
     "psr-4": {
-      "webtoolsnz\\AdminLte\\": "src/"
+      "webtoolsnz\\AdminLte\\": "src",
+      "webtoolsnz\\AdminLte\\tests\\": "tests"
     }
   },
   "scripts": {
-    "test": "./vendor/bin/phpunit --coverage-text --coverage-html=build;",
-    "php-cs-fixer" : "./vendor/bin/php-cs-fixer fix ."
+    "test": "./vendor/bin/phpunit --coverage-text",
+    "php-cs-fixer" : "./vendor/bin/php-cs-fixer fix . || true"
+  },
+  "extra": {
+    "asset-installer-paths": {
+      "npm-asset-library": "vendor/npm",
+      "bower-asset-library": "vendor/bower"
+    }
   }
 }

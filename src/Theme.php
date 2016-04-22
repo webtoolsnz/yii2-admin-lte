@@ -42,6 +42,16 @@ class Theme extends \yii\base\Theme
     public $skin = self::SKIN_BLUE;
 
     /**
+     * @var array
+     */
+    public $topMenuItems = [];
+
+    /**
+     * @var array
+     */
+    public $mainMenuItems = [];
+
+    /**
      *  Set the basePath of the theme, the
      */
     public function init()

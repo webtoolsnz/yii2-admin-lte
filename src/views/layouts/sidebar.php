@@ -4,8 +4,7 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <?= \webtoolsnz\AdminLte\widgets\Menu::widget([
             'options' => ['class' => 'sidebar-menu'],
-            'items' => method_exists($this->context->module, 'getMenuItems') ?
-                $this->context->module->getMenuItems($this->context) : [],
+            'items' => $this->theme->mainMenuItems
         ]) ?>
     </section>
     <!-- /.sidebar -->
