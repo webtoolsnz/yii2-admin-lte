@@ -9,6 +9,10 @@ php:
 install:
   - composer self-update
 
+cache:
+  directories:
+    - $HOME/.composer/cache
+
 before_script:
   - travis_retry composer self-update
   - travis_retry composer global require "fxp/composer-asset-plugin"
