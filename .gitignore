@@ -1,7 +1,6 @@
 vendor/
 .idea
 build/
-composer.lock
 .sass-cache
 phpunit.xml
 .DS_Store
