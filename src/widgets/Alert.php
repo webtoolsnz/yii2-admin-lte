@@ -103,7 +103,6 @@ class Alert extends \yii\base\Widget
         return $this->dismissible ? Html::button('×', [
             'class' => 'close',
             'data-dismiss' => 'alert',
-            'aria-hidden' => true,
         ]) : '';
     }
 }
