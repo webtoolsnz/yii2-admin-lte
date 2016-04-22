@@ -93,13 +93,18 @@ class Box extends \yii\base\Widget
     public $bodyPadding = true;
 
     /**
+     * @var array
+     */
+    public $headerOptions = ['class' => 'box-header'];
+
+    /**
      * Initializes the widget.
      */
     public function init()
     {
         parent::init();
 
-        Html::addCssClass($this->options, ['box', 'box-'.$this->type]);
+        Html::addCssClass($this->options, ['box', 'box-' . $this->type]);
 
         if ($this->solid) {
             Html::addCssClass($this->options, 'box-solid');
@@ -120,25 +125,16 @@ class Box extends \yii\base\Widget
      */
     public function renderHeading()
     {
-        $html = '';
-
-        if ($this->icon) {
-            $html .= Html::tag('i', null, ['class' => $this->icon]);
-        }
-
-        if ($this->title) {
-            $html .= Html::tag('h3', $this->title, ['class' => 'box-title']);
-        }
-
-        $options = ['class' => 'box-header'];
+        $html = $this->renderIcon();
+        $html .= $this->renderTitle();
 
         if ($this->headerWithBorder) {
-            Html::addCssClass($options, 'with-border');
+            Html::addCssClass($this->headerOptions, 'with-border');
         }
 
         $html .= $this->renderTools();
 
-        return Html::tag('div', $html, $options);
+        return Html::tag('div', $html, $this->headerOptions);
     }
 
     /**
@@ -182,20 +178,47 @@ class Box extends \yii\base\Widget
             $tools[] = $this->tools;
         }
 
-        if ($this->collapse) {
-            $tools[] = Html::tag('button', '<i class="fa fa-minus"></i>', [
-                'class' => 'btn btn-default btn-xs',
-                'data-widget' => 'collapse',
-            ]);
-        }
-
-        if ($this->remove) {
-            $tools[] = Html::tag('button', '<i class="fa fa-times"></i>', [
-                'class' => 'btn btn-default btn-xs',
-                'data-widget' => 'remove',
-            ]);
-        }
+        $tools[] = $this->renderCollapseButton();
+        $tools[] = $this->renderRemoveButton();
 
         return Html::tag('div', implode(' ', $tools), ['class' => 'box-tools pull-right']);
+    }
+
+    /**
+     * @return string
+     */
+    public function renderCollapseButton()
+    {
+        return $this->collapse ? Html::tag('button', '<i class="fa fa-minus"></i>', [
+            'class' => 'btn btn-default btn-xs',
+            'data-widget' => 'collapse',
+        ]) : '';
+    }
+
+    /**
+     * @return string
+     */
+    public function renderRemoveButton()
+    {
+        return $this->remove ? Html::tag('button', '<i class="fa fa-times"></i>', [
+            'class' => 'btn btn-default btn-xs',
+            'data-widget' => 'remove',
+        ]) : '';
+    }
+
+    /**
+     * @return string
+     */
+    public function renderIcon()
+    {
+        return $this->icon ? Html::tag('i', null, ['class' => $this->icon]) : '';
+    }
+
+    /**
+     * @return string
+     */
+    public function renderTitle()
+    {
+        return $this->title ? Html::tag('h3', $this->title, ['class' => 'box-title']) : '';
     }
 }
