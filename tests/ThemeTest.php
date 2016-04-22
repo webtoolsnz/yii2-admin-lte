@@ -139,9 +139,5 @@ class ThemeTest extends TestCase
 
         $this->assertNotNull($crumb);
         $this->assertContains('crumbs', $crumb->text());
-
-
-
-
     }
 }
