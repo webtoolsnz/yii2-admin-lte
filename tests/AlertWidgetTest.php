@@ -5,7 +5,7 @@ use webtoolsnz\AdminLte\widgets\Alert;
 
 class AlertWidgetTest extends TestCase
 {
-    public function testBasicBoxHtml()
+    public function testWidgetHtml()
     {
         $html = Alert::widget([
             'type' => Alert::TYPE_SUCCESS,
