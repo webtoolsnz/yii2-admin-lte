@@ -3,6 +3,12 @@ Theme Configuration
 
 This document will cover some of the more advanced features of the yii2-admin-lte theme.
 
+1. [Skins](#skins)
+2. [Navigation](#navigation)
+3. [Asset Bundles](#assets-bundles)
+4. [Overriding Layouts](#overriding-layouts)
+5. [Custom PathMap](#custom-pathmap)
+
 ## Skins
 
 The [AdminLte](https://github.com/almasaeed2010/adminlte) theme provides a number of preconfigured skins, these are supported by simply setting the `skin` attribute of the `Theme` like below.
@@ -34,6 +40,94 @@ The following skin constants are currently available:
 - `\webtoolsnz\AdminLte\Theme::SKIN_PURPLE_LIGHT`
 
 To get an idea of what they look like checkout the preview site [here](https://almsaeedstudio.com/preview).
+
+## Navigation
+
+By default the theme supports two menus, the main navigation appears in the sidebar on the left,
+the top/supplemental navigation appears at the top right of the screen.
+
+The theme provides a simple interface for configuring these menu items, of course there is nothing stopping you from 
+overriding the `sidebar.php` or `header.php` layout files and implementing the navigation however you like.
+
+### Main Menu
+
+Simply set the `mainMenuItems` property on the theme in order to populate the main menu
+
+The main menu is rendered using the `\webtoolsnz\AdminLte\widgets\Menu` check the [documentation for that widget](menu.md) for a more details.
+
+### Top Menu
+
+Simply set the `topMenuItems` property on the theme in order to populate that menu.
+
+The top menu is rendered using the `yii\bootstrap\Nav` widget, see the official documentation for more details
+
+
+
+### Module Menu Example
+
+Here's an example of configuring the menus for a given module.
+
+```php
+
+class Module extends \yii\base\Module
+{
+    /**
+     * @param \yii\base\Action $event
+     * @return bool
+     */
+    public function beforeAction($action)
+    {
+        if (!parent::beforeAction($action)) {
+            return false;
+        }
+
+        $theme = \Yii::$app->view->theme;
+        $theme->mainMenuItems = $this->getMenuItems($action);
+        $theme->topMenuItems = $this->getTopMenuItems($action);
+
+        return true;
+    }
+
+    /**
+     * @param $context
+     * @return array
+     */
+    public function getMenuItems($action)
+    {
+        return [
+            [
+                'label' => 'MAIN NAVIGATION',
+            ],
+            [
+                'icon' => 'glyphicon glyphicon-home',
+                'label' => 'Dashboard',
+                'url' => ['/admin/'],
+                'active' => $action->controller->id == 'default',
+            ],
+            [
+                'icon' => 'glyphicon glyphicon-user',
+                'label' => 'Users',
+                'url' => ['/admin/user'],
+                'active' => $action->controller->id == 'user',
+            ],
+        ];
+    }
+
+    public function getTopMenuItems($action)
+    {
+        return [
+            [
+                'label' => '<span class="glyphicon glyphicon-log-out"></span> Logout',
+                'url' => ['/logout'],
+                'encode' => false,
+            ],
+        ];
+    }
+}
+```
+
+
+
 
 ## Asset Bundles
 
