@@ -59,8 +59,10 @@ The way `yii2-admin-lte` is built allows you to override parts of the layout eg.
 
 ```bash
 main.php
+├── head.php
 ├── header.php
 ├── sidebar.php
+├── content-header.php
 └── footer.php
 ``` 
 

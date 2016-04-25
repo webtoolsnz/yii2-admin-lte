@@ -4,69 +4,46 @@
  * @var $content string
  */
 
-use yii\bootstrap\Html;
-use yii\widgets\Breadcrumbs;
 use webtoolsnz\AdminLte\ThemeAsset;
 
 ThemeAsset::register($this);
-
 ?>
 
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="text/html;charset=<?= Yii::$app->charset ?>" http-equiv="Content-Type">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
+<?= $this->render('//layouts/head') ?>
 
-</head>
 <body class="hold-transition <?= $this->theme->skin ?> sidebar-mini">
 <div class="wrapper">
 
-    <!-- header -->
+    <!-- Header Begin -->
     <?= $this->render('//layouts/header') ?>
+    <!-- Header Begin -->
 
-    <!-- Sidebar -->
+    <!-- Sidebar Begin -->
     <?= $this->render('//layouts/sidebar') ?>
+    <!-- Sidebar End -->
 
     <?php $this->beginBody() ?>
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                <?= Html::encode($this->title) ?>
-            </h1>
+        <!-- Content Header Begin -->
+        <?= $this->render('//layouts/content-header') ?>
+        <!-- Content Header End -->
 
-            <?= Breadcrumbs::widget([
-                'homeLink' => [
-                    'label' => 'Home',
-                    'url' => '/' . ($this->context ? $this->context->module->id : null),
-                ],
-                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]) ?>
-
-        </section>
-
-        <!-- Main content -->
+        <!-- Content Begin -->
         <section class="content">
             <?= $content ?>
         </section>
-        <!-- /.content -->
+        <!-- Content End -->
     </div>
-    <!-- /.content-wrapper -->
     <?php $this->endBody() ?>
 
+    <!-- Footer Begin -->
     <?= $this->render('//layouts/footer') ?>
-
+    <!-- Footer End -->
 </div>
-<!-- ./wrapper -->
 </body>
 </html>
 <?php $this->endPage() ?>
