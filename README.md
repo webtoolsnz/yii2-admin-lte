@@ -9,6 +9,8 @@ Yii2 Integration kit for AdminLTE theme
 The purpose of this project is to allow easy integration of the popular bootstrap theme [AdminLTE](https://github.com/almasaeed2010/adminlte)
 for any Yii2 based applications.
 
+!["AdminLTE Presentation"] (http://i.imgur.com/YOyqDPa.png "AdminLTE Presentation")
+
 ## Installation
 
 Install `webtoolsnz/yii2-admin-lte` using Composer.
