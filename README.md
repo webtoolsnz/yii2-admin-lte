@@ -50,7 +50,7 @@ Getting started with the Theme is really simple just the components section of y
     ...
 ]
 ```
-If you have any layout files named `main.php` those will need to be removed or renamed, read more about [theme configuration](docs/theme.md)
+If you have any layout files named `main.php` those will need to be removed or renamed, as they will override the provided layout files, read more about [theme configuration](docs/theme.md)
 
 ## Testing
 

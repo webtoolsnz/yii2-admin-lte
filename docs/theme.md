@@ -102,7 +102,7 @@ If this does not provide enough flexibility for your configuration you can provi
 ]
 ```
 
-Checkout the [official guide](http://www.yiiframework.com/doc-2.0/guide-output-theming.html#theme-inheritance)for more information about theme inheritance and pathMap.
+Checkout the [official guide](http://www.yiiframework.com/doc-2.0/guide-output-theming.html#theme-inheritance) for more information about theme inheritance and pathMap.
 
 
 
