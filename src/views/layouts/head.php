@@ -3,6 +3,7 @@
  * @var $this \yii\web\View
  */
 use yii\bootstrap\Html;
+
 ?>
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
