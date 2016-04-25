@@ -70,6 +70,11 @@ class Box extends \yii\base\Widget
     /**
      * @var bool
      */
+    public $collapsed = false;
+
+    /**
+     * @var bool
+     */
     public $remove = false;
 
     /**
@@ -116,6 +121,10 @@ class Box extends \yii\base\Widget
      */
     public function run()
     {
+        if ($this->collapse && $this->collapsed) {
+            Html::addCssClass($this->options, 'collapsed-box');
+        }
+
         $content = [$this->renderHeading(), $this->renderBody(), $this->renderOverlay(), $this->renderFooter()];
         return Html::tag('div', implode(PHP_EOL, $content), $this->options);
     }
@@ -189,7 +198,9 @@ class Box extends \yii\base\Widget
      */
     public function renderCollapseButton()
     {
-        return $this->collapse ? Html::tag('button', '<i class="fa fa-minus"></i>', [
+        $icon = $this->collapsed ? '<i class="fa fa-plus"></i>' : '<i class="fa fa-minus"></i>';
+
+        return $this->collapse ? Html::tag('button', $icon, [
             'class' => 'btn btn-default btn-xs',
             'data-widget' => 'collapse',
         ]) : '';

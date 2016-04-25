@@ -1,6 +1,7 @@
 <?php
 namespace webtoolsnz\AdminLte\tests;
 
+use Symfony\Component\DomCrawler\Crawler;
 use webtoolsnz\AdminLte\widgets\Box;
 
 class BoxWidgetTest extends TestCase
@@ -32,5 +33,18 @@ class BoxWidgetTest extends TestCase
         ]);
 
         $this->assertXmlStringEqualsXmlFile(__DIR__ . '/data/advanced-box.html', $html);
+    }
+
+    public function testCollapsedState()
+    {
+        $box = Box::widget(['collapse' => true, 'collapsed' => true]);
+        $crawler = new Crawler($box);
+        $this->assertContains('collapsed-box', $crawler->filter('.box')->attr('class'));
+        $this->assertEquals('fa fa-plus', $crawler->filter('.box .box-header .box-tools button[data-widget="collapse"] i')->attr('class'));
+
+        $box = Box::widget(['collapse' => true, 'collapsed' => false]);
+        $crawler = new Crawler($box);
+        $this->assertNotContains('collapsed-box', $crawler->filter('.box')->attr('class'));
+        $this->assertEquals('fa fa-minus', $crawler->filter('.box .box-header .box-tools button[data-widget="collapse"] i')->attr('class'));
     }
 }
