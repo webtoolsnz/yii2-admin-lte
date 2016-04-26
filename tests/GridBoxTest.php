@@ -38,7 +38,6 @@ class GridBoxTest extends TestCase
      */
     public function testGridBoxRender($dataProvider)
     {
-
         $grid = GridBox::widget([
             'id' => 'gridbox-test-id',
             'tools' => Html::tag('span', 'abc123', ['class' => '.tool-test']),
