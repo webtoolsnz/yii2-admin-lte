@@ -11,6 +11,8 @@
  */
 
 namespace webtoolsnz\AdminLte\widgets;
+use yii\grid\GridViewAsset;
+use yii\helpers\Json;
 
 /**
  * Class GridBox
@@ -42,6 +44,12 @@ class GridBox extends \yii\grid\GridView
      */
     public function run()
     {
+        $id = $this->options['id'];
+        $options = Json::htmlEncode($this->getClientOptions());
+        $view = $this->getView();
+        GridViewAsset::register($view);
+        $view->registerJs("jQuery('#$id').yiiGridView($options);");
+
         $options = array_merge($this->defaultBoxOptions, [
             'options' => $this->options,
             'title' => $this->renderSummary(),
