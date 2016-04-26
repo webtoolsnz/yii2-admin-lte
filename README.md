@@ -33,6 +33,7 @@ for each individual widget below.
 - Alert
 - Callout
 - Menu
+- GridBox
 
 
 ### Theme
