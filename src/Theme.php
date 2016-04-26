@@ -15,6 +15,8 @@ namespace webtoolsnz\AdminLte;
 /**
  * Class Theme
  * @package webtoolsnz\AdminLte
+ *
+ * @property $skin string;
  */
 class Theme extends \yii\base\Theme
 {
@@ -35,11 +37,6 @@ class Theme extends \yii\base\Theme
      * @var string
      */
     public $root = '@app';
-
-    /**
-     * @var string
-     */
-    public $skin = self::SKIN_BLUE;
 
     /**
      * @var array
@@ -75,5 +72,21 @@ class Theme extends \yii\base\Theme
                 $this->getPath('views'),
             ],
         ];
+    }
+
+    /**
+     * @param $skin
+     */
+    public function setSkin($skin)
+    {
+        AdminLteAsset::$skin = $skin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSkin()
+    {
+        return AdminLteAsset::$skin;
     }
 }

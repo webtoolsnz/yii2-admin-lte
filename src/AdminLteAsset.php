@@ -45,7 +45,7 @@ class AdminLteAsset extends \yii\web\AssetBundle
     /**
      * @var string
      */
-    public static $skin;
+    public static $skin = Theme::SKIN_BLUE;
 
     /**
      * @inheritdoc
