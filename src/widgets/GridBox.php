@@ -11,6 +11,7 @@
  */
 
 namespace webtoolsnz\AdminLte\widgets;
+
 use yii\grid\GridViewAsset;
 use yii\helpers\Json;
 
