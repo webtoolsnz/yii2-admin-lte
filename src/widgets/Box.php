@@ -100,7 +100,12 @@ class Box extends \yii\base\Widget
     /**
      * @var array
      */
-    public $headerOptions = ['class' => 'box-header'];
+    public $headerOptions = [];
+
+    /**
+     * @var array
+     */
+    public $footerOptions = [];
 
     /**
      * Initializes the widget.
@@ -137,6 +142,8 @@ class Box extends \yii\base\Widget
         $html = $this->renderIcon();
         $html .= $this->renderTitle();
 
+        Html::addCssClass($this->headerOptions, 'box-header');
+
         if ($this->headerWithBorder) {
             Html::addCssClass($this->headerOptions, 'with-border');
         }
@@ -165,7 +172,9 @@ class Box extends \yii\base\Widget
      */
     public function renderFooter()
     {
-        return $this->footer ? Html::tag('div', $this->footer, ['class' => 'box-footer']) : '';
+        Html::addCssClass($this->footerOptions, 'box-footer');
+
+        return $this->footer ? Html::tag('div', $this->footer, $this->footerOptions) : '';
     }
 
     /**

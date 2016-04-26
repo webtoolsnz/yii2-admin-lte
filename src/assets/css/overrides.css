@@ -30,6 +30,9 @@
 .box .box-body {
   overflow-x: hidden;
 }
+.box .box-footer ul.pagination {
+  margin: 0;
+}
 
 .callout .callout-icon {
   font-size: 35px;

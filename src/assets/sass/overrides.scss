@@ -44,6 +44,12 @@ $lightGrey: #888888;
   .box-body {
     overflow-x: hidden;
   }
+
+  .box-footer {
+    ul.pagination {
+      margin:0;
+    }
+  }
 }
 
 .callout {
