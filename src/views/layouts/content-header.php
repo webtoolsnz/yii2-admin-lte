@@ -2,8 +2,10 @@
 /**
  * @var $this \yii\web\View
  */
+
 use yii\bootstrap\Html;
 use yii\widgets\Breadcrumbs;
+use webtoolsnz\AdminLte\widgets\FlashMessages;
 
 ?>
 
@@ -19,4 +21,6 @@ use yii\widgets\Breadcrumbs;
         ],
         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     ]) ?>
+
+    <?= FlashMessages::widget() ?>
 </section>

@@ -33,9 +33,7 @@ ThemeAsset::register($this);
         <!-- Content Header End -->
 
         <!-- Content Begin -->
-        <section class="content">
-            <?= $content ?>
-        </section>
+        <?= $this->render('//layouts/content', ['content' => $content]) ?>
         <!-- Content End -->
     </div>
     <?php $this->endBody() ?>
