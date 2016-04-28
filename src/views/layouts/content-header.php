@@ -21,6 +21,4 @@ use webtoolsnz\AdminLte\widgets\FlashMessages;
         ],
         'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
     ]) ?>
-
-    <?= FlashMessages::widget() ?>
 </section>

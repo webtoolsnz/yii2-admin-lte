@@ -3,12 +3,22 @@
 namespace webtoolsnz\AdminLte\tests;
 
 use webtoolsnz\AdminLte\AdminLteAsset;
+use webtoolsnz\AdminLte\FlashMessage;
 use webtoolsnz\AdminLte\Theme;
 use Yii;
 use Symfony\Component\DomCrawler\Crawler;
 
 class ThemeTest extends TestCase
 {
+    public function setUp()
+    {
+        parent::setUp();
+
+        Yii::$app->view->theme = Yii::createObject([
+            'class' => \webtoolsnz\AdminLte\Theme::className(),
+        ]);
+    }
+
     /**
      * This tests whether the correct CSS file is loaded and body-class is set,
      * when the `skin` property is set on the theme.
@@ -17,10 +27,7 @@ class ThemeTest extends TestCase
      */
     public function testSkinClassAndCssFile($skin, $expected)
     {
-        Yii::$app->view->theme = Yii::createObject([
-            'class' => \webtoolsnz\AdminLte\Theme::className(),
-            'skin' => $skin
-        ]);
+        Yii::$app->view->theme->skin = $skin;
 
         $view = Yii::$app->getView();
         $html = $view->render('//layouts/main', ['content' => '']);
@@ -71,19 +78,15 @@ class ThemeTest extends TestCase
 
     public function testTopMenu()
     {
-        Yii::$app->view->theme = Yii::createObject([
-            'class' => \webtoolsnz\AdminLte\Theme::className(),
-            'topMenuItems' => [
-                [
-                    'label' => 'Logout',
-                    'url' => '\test-logout',
-                    'linkOptions' => ['class' => 'test-logout']
-                ],
-            ]
-        ]);
+        Yii::$app->view->theme->topMenuItems = [
+            [
+                'label' => 'Logout',
+                'url' => '\test-logout',
+                'linkOptions' => ['class' => 'test-logout']
+            ],
+        ];
 
         $view = Yii::$app->getView();
-        //$content = $view->render('@tests/views/test');
         $html = $view->render('//layouts/main', ['content' => '']);
 
         $crawler = new Crawler($html);
@@ -95,12 +98,9 @@ class ThemeTest extends TestCase
 
     public function testMainMenu()
     {
-        Yii::$app->view->theme = Yii::createObject([
-            'class' => \webtoolsnz\AdminLte\Theme::className(),
-            'mainMenuItems' => [
-                ['label' => 'Home', 'url' => '/home/'],
-            ]
-        ]);
+        Yii::$app->view->theme->mainMenuItems = [
+            ['label' => 'Home', 'url' => '/home/'],
+        ];
 
         $view = Yii::$app->getView();
         $html = $view->render('//layouts/main', ['content' => '']);
@@ -114,10 +114,6 @@ class ThemeTest extends TestCase
 
     public function testContentHeader()
     {
-        Yii::$app->view->theme = Yii::createObject([
-            'class' => \webtoolsnz\AdminLte\Theme::className(),
-        ]);
-
         $view = Yii::$app->getView();
         $content = $view->render('@tests/views/content-header-test');
         $html = $view->render('//layouts/main', ['content' => $content]);
@@ -139,5 +135,19 @@ class ThemeTest extends TestCase
 
         $this->assertNotNull($crumb);
         $this->assertContains('crumbs', $crumb->text());
+    }
+
+    public function testFlashMessages()
+    {
+        Yii::$app->session->setFlash('test', new FlashMessage([
+            'message' => 'This is a test flash message'
+        ]));
+
+        $view = Yii::$app->getView();
+        $html = $view->render('//layouts/main', ['content' => 'Testing']);
+        $crawler = new Crawler($html);
+        $crawler->filter('section.content')->html();
+
+        $this->assertContains('This is a test flash message', $crawler->filter('section.content')->text());
     }
 }

@@ -13,38 +13,14 @@
 namespace webtoolsnz\AdminLte\widgets;
 
 use webtoolsnz\AdminLte\FlashMessage;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
 
 /**
- * Alert widget renders a message from session flash. All flash messages are displayed
- * in the sequence they were assigned using setFlash. You can set message as following:
- *
- * - \Yii::$app->getSession()->setFlash('error', 'This is the message');
- * - \Yii::$app->getSession()->setFlash('success', 'This is the message');
- * - \Yii::$app->getSession()->setFlash('info', 'This is the message');
- *
- * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @author Alexander Makarov <sam@rmcreative.ru>
+ * Class FlashMessages
+ * @package webtoolsnz\AdminLte\widgets
  */
 class FlashMessages extends \yii\bootstrap\Widget
 {
-    /**
-     * @return FlashMessage[]
-     */
-    protected function getMessages()
-    {
-        $session = \Yii::$app->getSession();
-        $messages = [];
-        foreach ($session->getAllFlashes() as $name => $flash) {
-            if ($flash instanceof FlashMessage && $flash->validate()) {
-                $messages[] = $flash;
-                $session->removeFlash($name);
-            }
-        }
-
-        return $messages;
-    }
+    public $messages;
 
     /**
      * @param FlashMessage $message
