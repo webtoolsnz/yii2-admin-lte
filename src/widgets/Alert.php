@@ -82,17 +82,17 @@ class Alert extends \yii\base\Widget
      */
     public function renderTitle()
     {
-        $icon = Html::tag('i', null, [
-            'class' => ArrayHelper::getValue(self::$_typeIcons, $this->type, 'icon fa fa-info')
-        ]);
+        if ($this->title) {
+            $icon = Html::tag('i', null, [
+                'class' => ArrayHelper::getValue(self::$_typeIcons, $this->type, 'icon fa fa-info')
+            ]);
 
-        $html = [
-            $this->renderDismissButton(),
-            $icon,
-            $this->title
-        ];
+            $html = Html::tag('h4', $icon . $this->title . $this->renderDismissButton());
+        } else {
+            $html = $this->renderDismissButton();
+        }
 
-        return Html::tag('h4', implode(PHP_EOL, $html));
+        return $html;
     }
 
     /**
