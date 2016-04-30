@@ -34,6 +34,7 @@ for each individual widget below.
 - Callout
 - Menu
 - GridBox
+- [FlashMessages](docs/flashmessages.md)
 
 
 ### Theme
