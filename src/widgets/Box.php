@@ -169,7 +169,8 @@ class Box extends \yii\base\Widget
             Html::addCssClass($this->bodyOptions, 'no-padding');
         }
 
-        return !empty($this->content) ? Html::tag('div', $this->content, $this->bodyOptions) : '';
+        $content = trim($this->content);
+        return !empty($content) ? Html::tag('div', $content, $this->bodyOptions) : '';
     }
 
     /**
