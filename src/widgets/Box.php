@@ -108,6 +108,11 @@ class Box extends \yii\base\Widget
     public $footerOptions = [];
 
     /**
+     * @var array
+     */
+    public $bodyOptions = [];
+
+    /**
      * Initializes the widget.
      */
     public function init()
@@ -158,13 +163,13 @@ class Box extends \yii\base\Widget
      */
     public function renderBody()
     {
-        $options = ['class' => 'box-body'];
+        Html::addCssClass($this->bodyOptions, 'box-body');
 
         if (!$this->bodyPadding) {
-            Html::addCssClass($options, 'no-padding');
+            Html::addCssClass($this->bodyOptions, 'no-padding');
         }
 
-        return Html::tag('div', $this->content, $options);
+        return !empty($this->content) ? Html::tag('div', $this->content, $this->bodyOptions) : '';
     }
 
     /**
