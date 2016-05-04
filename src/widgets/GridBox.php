@@ -13,6 +13,7 @@
 namespace webtoolsnz\AdminLte\widgets;
 
 use yii\grid\GridViewAsset;
+use yii\helpers\Html;
 use yii\helpers\Json;
 
 /**
@@ -21,6 +22,11 @@ use yii\helpers\Json;
  */
 class GridBox extends \yii\grid\GridView
 {
+    /**
+     * @var string|null
+     */
+    public $title;
+
     /**
      * @var string
      */
@@ -37,8 +43,12 @@ class GridBox extends \yii\grid\GridView
     protected $defaultBoxOptions = [
         'type' => Box::TYPE_DEFAULT,
         'bodyPadding' => false,
-        'footerOptions' => ['class' => 'text-right'],
     ];
+
+    /**
+     * @var array
+     */
+    public $summaryOptions = ['class' => 'summary pull-left'];
 
     /**
      * Runs the widget.
@@ -53,12 +63,24 @@ class GridBox extends \yii\grid\GridView
 
         $options = array_merge($this->defaultBoxOptions, [
             'options' => $this->options,
-            'title' => $this->renderSummary(),
+            'title' => $this->title,
             'tools' => $this->tools,
             'content' => $this->renderItems(),
-            'footer' => $this->renderPager(),
+            'footer' => $this->renderFooter(),
         ], $this->boxOptions);
 
         echo \webtoolsnz\AdminLte\widgets\Box::widget($options);
+    }
+
+    /**
+     * @return string
+     */
+    public function renderFooter()
+    {
+        return $this->renderSummary() . Html::tag(
+            'div',
+            $this->renderPager(),
+            ['class' => 'text-right pull-right']
+        );
     }
 }

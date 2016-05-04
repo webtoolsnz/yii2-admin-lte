@@ -155,7 +155,7 @@ class Box extends \yii\base\Widget
 
         $html .= $this->renderTools();
 
-        return Html::tag('div', $html, $this->headerOptions);
+        return ($this->title || $this->tools) ? Html::tag('div', $html, $this->headerOptions) : '';
     }
 
     /**

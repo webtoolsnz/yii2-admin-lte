@@ -37,12 +37,12 @@ class BoxWidgetTest extends TestCase
 
     public function testCollapsedState()
     {
-        $box = Box::widget(['collapse' => true, 'collapsed' => true]);
+        $box = Box::widget(['title' => 'Collapsed Box', 'collapse' => true, 'collapsed' => true]);
         $crawler = new Crawler($box);
         $this->assertContains('collapsed-box', $crawler->filter('.box')->attr('class'));
         $this->assertEquals('fa fa-plus', $crawler->filter('.box .box-header .box-tools button[data-widget="collapse"] i')->attr('class'));
 
-        $box = Box::widget(['collapse' => true, 'collapsed' => false]);
+        $box = Box::widget(['title' => 'Expanded Box', 'collapse' => true, 'collapsed' => false]);
         $crawler = new Crawler($box);
         $this->assertNotContains('collapsed-box', $crawler->filter('.box')->attr('class'));
         $this->assertEquals('fa fa-minus', $crawler->filter('.box .box-header .box-tools button[data-widget="collapse"] i')->attr('class'));

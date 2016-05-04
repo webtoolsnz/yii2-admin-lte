@@ -61,8 +61,6 @@ class GridBoxTest extends TestCase
         $this->assertEquals('grid-view box box-default', $root->attr('class'));
 
         $header = $root->filter('div.box-header');
-        $this->assertContains('Showing 1-3 of 3 items.', $header->text());
-
         $tools = $header->filter('div.box-tools');
         $this->assertContains('abc123', $tools->text());
 
@@ -72,5 +70,8 @@ class GridBoxTest extends TestCase
         $this->assertNotNull($body->filter('table.table')->eq(0));
 
         $this->assertEquals('bar', $body->filter('tr[data-key="1"] td.username')->text());
+
+        $footer = $header = $root->filter('div.box-footer');
+        $this->assertContains('Showing 1-3 of 3 items.', $footer->text());
     }
 }
