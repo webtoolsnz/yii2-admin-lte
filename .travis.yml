@@ -16,6 +16,7 @@ cache:
 before_script:
   - travis_retry composer self-update
   - travis_retry composer global require "fxp/composer-asset-plugin"
+  - travis_retry symfony/yaml
   - travis_retry composer require fabpot/php-cs-fixer
   - travis_retry composer install --no-interaction --prefer-source --dev
 
