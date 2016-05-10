@@ -41,10 +41,12 @@ $lightGrey: #888888;
       color: $lightGrey;
     }
   }
+  .box-header {
+    min-height: 33px;
+  }
   .box-body {
     overflow-x: hidden;
   }
-
   .box-footer {
     ul.pagination {
       margin:0;

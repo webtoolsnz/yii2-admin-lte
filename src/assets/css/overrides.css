@@ -27,6 +27,9 @@
   font-size: 60px;
   color: #888888;
 }
+.box .box-header {
+  min-height: 33px;
+}
 .box .box-body {
   overflow-x: hidden;
 }
