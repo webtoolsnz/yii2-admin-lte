@@ -14,13 +14,11 @@ cache:
     - $HOME/.composer/cache
 
 before_script:
-  - phpenv config-rm xdebug.ini || return 0
   - travis_retry composer self-update
   - travis_retry composer global require "fxp/composer-asset-plugin"
   - travis_retry composer require symfony/yaml
   - travis_retry composer require fabpot/php-cs-fixer
   - travis_retry composer install --no-interaction --prefer-source --dev
-  - phpenv config-add xdebug.ini || return 0
 
 script:
   - phpunit --coverage-text --coverage-clover=coverage.clover
