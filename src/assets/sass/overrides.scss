@@ -61,4 +61,13 @@ $lightGrey: #888888;
   }
 }
 
+ul.sidebar-menu {
+  li > a small.label {
+    margin-right: 0;
+  }
+
+  li.treeview > a small.label {
+    margin-right: 20px;
+  }
+}
 

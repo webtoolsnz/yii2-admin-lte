@@ -25,12 +25,12 @@ class Menu extends \yii\widgets\Menu
     /**
      * @inheritdoc
      */
-    public $linkTemplate = '<a href="{url}">{icon} {label}</a>';
+    public $linkTemplate = '<a href="{url}">{icon} {label} {badge}</a>';
 
     /**
      * @var string
      */
-    public $linkWithChildrenTemplate = '<a href="{url}">{icon} {label} <i class="fa fa-angle-left pull-right"></i></a>';
+    public $linkWithChildrenTemplate = '<a href="{url}">{icon} {label} {badge} <i class="fa fa-angle-left pull-right"></i></a>';
 
     /**
      * @var string
@@ -63,9 +63,22 @@ class Menu extends \yii\widgets\Menu
             '{url}' => Url::to($item['url']),
             '{label}' => '<span>' . $item['label'] . '</span>',
             '{icon}' => isset($item['icon']) ? '<i class="' . $item['icon'] . '"></i>' : '',
+            '{badge}' => isset($item['badge']) ? $this->renderBadge($item) : '',
         ];
 
         return strtr($template, $placeholders);
+    }
+
+    /**
+     * @param $item
+     * @return string
+     */
+    protected function renderBadge($item)
+    {
+        $options = ArrayHelper::getValue($item, 'badgeOptions', []);
+        Html::addCssClass($options, 'label pull-right');
+
+        return Html::tag('small', $item['badge'], $options);
     }
 
     /**
