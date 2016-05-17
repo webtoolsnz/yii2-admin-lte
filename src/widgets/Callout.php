@@ -58,7 +58,7 @@ class Callout extends \yii\base\Widget
         self::TYPE_INFO => 'fa fa-info-circle',
         self::TYPE_SUCCESS => 'fa fa-check-circle',
         self::TYPE_WARNING => 'fa fa-exclamation-circle',
-        self::TYPE_DANGER => 'fa fa-ban',
+        self::TYPE_DANGER => 'fa fa-exclamation-triangle',
     ];
 
     /**
@@ -69,9 +69,13 @@ class Callout extends \yii\base\Widget
         Html::addCssClass($this->options, ['callout', 'callout-'.$this->type]);
         $html = [$this->renderIcon(), $this->renderContent()];
 
+        if ($this->showIcon) {
+            Html::addCssClass($this->options, 'callout-with-icon');
+        }
+
         return Html::tag(
             'div',
-            Html::tag('div', implode(PHP_EOL, $html), ['class' => 'row']),
+            Html::tag('div', implode(PHP_EOL, $html), ['class' => 'clearfix']),
             $this->options
         );
     }
@@ -81,18 +85,17 @@ class Callout extends \yii\base\Widget
      */
     public function renderContent()
     {
-        $html = [
-            Html::tag('h4', $this->title),
-            Html::tag('p', $this->message),
-        ];
+        $html = [];
 
-        $options = ['class' => 'col-xs-12'];
-
-        if ($this->showIcon) {
-            Html::addCssClass($options, 'col-sm-11 ');
+        if ($this->title) {
+            $html[] = Html::tag('h4', $this->title, ['class' => 'callout-title']);
+        } else {
+            $html[] = Html::tag('h4', null, ['class' => 'hidden-xs hidden-sm']);
         }
 
-        return Html::tag('div', implode(PHP_EOL, $html), $options);
+        $html[] = Html::tag('p', $this->message, ['class' => 'callout-message']);
+
+        return Html::tag('div', implode(PHP_EOL, $html), ['class' => 'callout-content']);
     }
 
     /**
@@ -105,7 +108,7 @@ class Callout extends \yii\base\Widget
                 'class' => ArrayHelper::getValue(self::$_typeIcons, $this->type, 'fa fa-info')
             ]);
 
-            return Html::tag('div', $icon, ['class' => 'col-sm-1 hidden-xs callout-icon']);
+            return Html::tag('div', $icon, ['class' => 'hidden-sm hidden-xs callout-icon']);
         }
 
         return '';

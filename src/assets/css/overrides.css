@@ -37,9 +37,22 @@
   margin: 0;
 }
 
-.callout .callout-icon {
-  font-size: 35px;
+div.callout {
+  clear: both;
+}
+div.callout.callout-with-icon .callout-icon {
+  width: 5%;
+  float: left;
   text-align: center;
+  font-size: 36px;
+  line-height: 120%;
+}
+div.callout.callout-with-icon .callout-content {
+  width: 95%;
+  float: left;
+}
+div.callout.callout-with-icon .callout-content .callout-title {
+  margin: 0 !important;
 }
 
 ul.sidebar-menu li > a small.label {

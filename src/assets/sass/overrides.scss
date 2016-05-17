@@ -54,12 +54,27 @@ $lightGrey: #888888;
   }
 }
 
-.callout {
-  .callout-icon {
-    font-size: 35px;
-    text-align:center;
+
+div.callout {
+  clear: both;
+  &.callout-with-icon {
+    .callout-icon {
+      width: 5%;
+      float:left;
+      text-align: center;
+      font-size: 36px;
+      line-height: 120%;
+    }
+    .callout-content {
+      width: 95%;
+      float:left;
+      .callout-title {
+        margin: 0!important;
+      }
+    }
   }
 }
+
 
 ul.sidebar-menu {
   li > a small.label {
