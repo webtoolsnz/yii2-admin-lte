@@ -36,5 +36,4 @@ class CalloutWidgetTest extends TestCase
         $this->assertEquals('callout callout-success', $root->attr('class'));
         $this->assertContains('Callout Message', $root->filter('.callout-content p.callout-message')->text());
     }
-
 }
