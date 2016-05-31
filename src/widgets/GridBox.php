@@ -65,7 +65,7 @@ class GridBox extends \yii\grid\GridView
             'options' => $this->options,
             'title' => $this->title,
             'tools' => $this->tools,
-            'content' => $this->renderItems(),
+            'content' => '<div class="table-responsive">'.$this->renderItems().'</div>',
             'footer' => $this->renderFooter(),
         ], $this->boxOptions);
 
