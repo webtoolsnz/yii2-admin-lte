@@ -4,7 +4,7 @@ namespace webtoolsnz\AdminLte\tests;
 use webtoolsnz\AdminLte\widgets\TimeLine;
 use Symfony\Component\DomCrawler\Crawler;
 
-class TimeLineWidgetTest extends TestCase
+class TimeLineTest extends TestCase
 {
     /**
      * @throws \Exception
