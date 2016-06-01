@@ -46,6 +46,11 @@ $lightGrey: #888888;
   }
   .box-body {
     overflow-x: hidden;
+    .table-responsive {
+      table.table {
+        margin-bottom: 0;
+      }
+    }
   }
   .box-footer {
     ul.pagination {
