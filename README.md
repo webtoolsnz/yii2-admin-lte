@@ -30,7 +30,7 @@ for each individual widget below.
 - Box
 - InfoBox
 - ProgressInfoBox
-- Alert
+- [Alert](docs/alerts.md)
 - Callout
 - Menu
 - GridBox
