@@ -25,7 +25,7 @@
   "require": {
     "yiisoft/yii2": "^2.0.7",
     "yiisoft/yii2-bootstrap": "*",
-    "almasaeed2010/adminlte": "^2.3",
+    "almasaeed2010/adminlte": "2.3.3",
     "fortawesome/font-awesome": "^4.6"
   },
   "require-dev": {
