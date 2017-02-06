@@ -47,6 +47,8 @@ class AdminLteAsset extends \yii\web\AssetBundle
      */
     public static $skin = Theme::SKIN_BLUE;
 
+    public static $customSkin = '';
+
     /**
      * @inheritdoc
      */
@@ -54,7 +56,7 @@ class AdminLteAsset extends \yii\web\AssetBundle
     {
         parent::init();
 
-        if (static::$skin) {
+        if (!static::$customSkin && static::$skin) {
             $this->css[] = sprintf('css/skins/%s.min.css', static::$skin);
         }
     }

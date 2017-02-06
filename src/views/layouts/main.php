@@ -15,7 +15,7 @@ ThemeAsset::register($this);
 
 <?= $this->render('//layouts/head') ?>
 
-<body class="hold-transition <?= $this->theme->skin ?> sidebar-mini">
+<body class="hold-transition <?= $this->theme->customSkin ? $this->theme->customSkin : $this->theme->skin ?> <?= $this->theme->layout ?>">
 <div class="wrapper">
 
     <!-- Header Begin -->

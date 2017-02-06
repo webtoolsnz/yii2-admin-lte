@@ -17,6 +17,7 @@ namespace webtoolsnz\AdminLte;
  * @package webtoolsnz\AdminLte
  *
  * @property $skin string;
+ * @property $customSkin string;
  */
 class Theme extends \yii\base\Theme
 {
@@ -33,6 +34,9 @@ class Theme extends \yii\base\Theme
     const SKIN_PURPLE = 'skin-purple';
     const SKIN_PURPLE_LIGHT = 'skin-purple-light';
 
+    const LAYOUT_SIDEBAR_MINI = 'sidebar-mini';
+    const LAYOUT_TOP_NAV = 'layout-top-nav';
+
     /**
      * @var string
      */
@@ -48,6 +52,8 @@ class Theme extends \yii\base\Theme
      */
     public $mainMenuItems = [];
 
+    public $layout = Theme::LAYOUT_SIDEBAR_MINI;
+
     /**
      *  Set the basePath of the theme, the
      */
@@ -55,6 +61,7 @@ class Theme extends \yii\base\Theme
     {
         $this->basePath = __DIR__;
         AdminLteAsset::$skin = $this->skin;
+        AdminLteAsset::$customSkin = $this->customSkin;
 
         if (!$this->pathMap) {
             $this->createPathMap();
@@ -88,5 +95,21 @@ class Theme extends \yii\base\Theme
     public function getSkin()
     {
         return AdminLteAsset::$skin;
+    }
+
+    /**
+     * @param $skin
+     */
+    public function setCustomSkin($skin)
+    {
+        AdminLteAsset::$customSkin = $skin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCustomSkin()
+    {
+        return AdminLteAsset::$customSkin;
     }
 }

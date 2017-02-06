@@ -1,3 +1,5 @@
+<?php if ($this->theme->layout == \webtoolsnz\AdminLte\Theme::LAYOUT_SIDEBAR_MINI) { ?>
+
 <aside class="main-sidebar">
 
     <section class="sidebar">
@@ -9,3 +11,5 @@
     </section>
     <!-- /.sidebar -->
 </aside>
+
+<?php } ?>
