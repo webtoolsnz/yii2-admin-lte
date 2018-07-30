@@ -54,6 +54,8 @@ class Theme extends \yii\base\Theme
 
     public $layout = Theme::LAYOUT_SIDEBAR_MINI;
 
+    public $showLogo = true;
+
     /**
      *  Set the basePath of the theme, the
      */

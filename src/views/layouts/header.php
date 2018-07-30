@@ -10,9 +10,9 @@ use yii\bootstrap\Html;
         <!-- Logo -->
         <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><?= Html::img('/img/logo-alt.png', ['alt' => \Yii::$app->name]) ?></span>
+            <span class="logo-mini"><?= $this->theme->showLogo ? Html::img('/img/logo-alt.png', ['alt' => \Yii::$app->name]) : \Yii::$app->name ?></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><?= Html::img('/img/logo.png', ['alt' => \Yii::$app->name]) ?></span>
+            <span class="logo-lg"><?= $this->theme->showLogo ? Html::img('/img/logo.png', ['alt' => \Yii::$app->name]) : \Yii::$app->name  ?></span>
         </a>
     <?php } ?>
 
@@ -27,7 +27,7 @@ use yii\bootstrap\Html;
 
         <?php if ($this->theme->layout == \webtoolsnz\AdminLte\Theme::LAYOUT_TOP_NAV) { ?>
             <a href="/" class="navbar-brand">
-                <?= Html::img('/img/logo.png', ['alt' => \Yii::$app->name]) ?>
+                <?= $this->theme->showLogo ? Html::img('/img/logo.png', ['alt' => \Yii::$app->name]) : \Yii::$app->name  ?>
             </a>
         <?php } ?>
 
