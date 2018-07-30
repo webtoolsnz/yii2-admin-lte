@@ -6,7 +6,7 @@ use yii\bootstrap\Html;
 ?>
 
 <header class="main-header">
-    <?php if ($this->theme->layout == AdminLteTheme::LAYOUT_SIDEBAR_MINI) { ?>
+    <?php if ($this->theme->layout == \webtoolsnz\AdminLte\Theme::LAYOUT_SIDEBAR_MINI) { ?>
         <!-- Logo -->
         <a href="/" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
